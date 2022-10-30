@@ -10,6 +10,10 @@ app.get('/', (req,res)=>{
     res.send('Hello World')
 })
 
+app.get('/users/:userId/books/:bookId', (req, res) => {
+    res.send(req.params)
+  })
+
 app.use('/todos', require('./routes/api/todos'))
 
 
