@@ -82,6 +82,7 @@ const createNewTodo = async (req, res) => {
 }
 
 const updateTodo = async (req, res)=> {
+    console.log('req.body', req.body)
     const filename = req.params.filename + '.json'
     try {
         const apiPath = path.join(__dirname, '..', 'model', filename)
@@ -91,6 +92,7 @@ const updateTodo = async (req, res)=> {
         if(!curTodo){
             return res.status(400).json({'message': 'Todo is not found'})
         }
+        console.log('req.body', req.body)
         if(req.body.title) curTodo.title = req.body.title
         if(req.body.description) curTodo.description = req.body.description
         if(req.body.status) curTodo.status = req.body.status

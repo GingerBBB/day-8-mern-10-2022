@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Hello This Ginger</h1>
+    <h1>Todo App</h1>
+    <div class="message"> Data is successfully retrived</div>
+    <form id="newTodoForm">
+        <input type="text" name="title" id="title" placeholder="title" required>
+        <input type="text" name="description" id="description" placeholder="description" required>
+        <div>
+            <select name="status" id="status">
+                <option value="in_progress">In progress</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+        <div>
+            <select name="priority" id="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+        <button class="button">Add</button>
+    </form>
+    <form id="editTodoForm">
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Todo item</th>
+                <th>description</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Timestamp</th>
+                <th>Actions</th>
+            </thead>
+            <%  todos.forEach(({title,description, status, priority, timestamp, id})=>{%> 
+                <tr id="<%= id %> " <% if(status === "completed") { %>class = "complete" <%   }  %> >
+                    <td><%= id %> </td>
+                    <td><%= title %> </td>
+                    <td><%= description %> </td>
+                    <td><%= status %> </td>
+                    <td><%= priority %> </td>
+                    <td><%= timestamp %> </td>
+                    <td>
+                        <button class="editButton button">Edit</button>
+                        <button class="deleteButton button">Delete</button>
+                        <button class="finishedButton button">Finished</button>
+                    </td>
+                </tr> 
+            
+            <%    }) %>
+        </table>
+    </form>
+     
+    <script> let todos = <%- JSON.stringify(todos) %> </script>
+    <script src="/public/scripts/todo.js"></script>
+</body>
+</html>
